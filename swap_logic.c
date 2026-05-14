@@ -6,12 +6,12 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:40:20 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/14 12:46:18 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/14 13:08:49 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ft_stack_sa(t_stack **stack)
+void	ft_swap_logic(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*second;
