@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/13 16:20:07 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/14 12:43:47 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 
-typef struct s_stack
+typedef struct s_stack
 {
 	int value;
 	int stack;
@@ -25,10 +25,13 @@ typef struct s_stack
 	struct s_stack *prev;
 } t_stack;
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
-int	ft_lstsize(t_stack *lst);
-t_stack	*ft_lstlast(t_stack *lst);
+void	ft_stackadd_back(t_stack **stack, t_stack *new);
+void	ft_stackadd_front(t_stack **stack, t_stack *new);
+int	ft_stacksize(t_stack *stack);
+t_stack	*ft_stacklast(t_stack *stack);
+t_stack *ft_stacknew(int value);
+void	ft_stack_sa(t_stack **stack);
+void	ft_freestack(t_stack **stack);
 
 
 
