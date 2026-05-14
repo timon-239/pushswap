@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   swap_algos.c                                      :+:      :+:    :+:    */
+/*   swap_logic.c                                      :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:40:20 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/14 13:08:49 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/14 13:16:38 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -27,6 +27,25 @@ void	ft_swap_logic(t_stack **stack)
 	second->prev = NULL;
 	first->prev = second;
 	*stack = second;
+}
+
+void	sa(t_stack **stack_a)
+{
+	ft_swap_logic(stack_a);
+	write(1, "sa\n", 3);
+}
+
+void	sb(t_stack **stack_b)
+{
+	ft_swap_logic(stack_b);
+	write(1, "sb\n", 3);
+}
+
+void	ss(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_swap_logic(stack_a);
+	ft_swap_logic(btack_b);
+	write(1, "ss\n", 3);
 }
 /*#include <stdio.h>
 
