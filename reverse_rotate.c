@@ -6,12 +6,12 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/14 14:34:02 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/14 15:07:04 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/15 15:05:03 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	reverse_ro_logic(stack_t **stack)
+void	reverse_ro_logic(t_stack **stack)
 {
 	t_stack	*prev_to_last;
 	t_stack	*last;
@@ -27,21 +27,21 @@ void	reverse_ro_logic(stack_t **stack)
 	*stack = last;
 }
 
-void	rra(stack_t **a)
+void	rra(t_stack **a)
 {
-	reverse_ro_logic(stack_t * *a);
+	reverse_ro_logic(a);
 	write(1, "rra\n"), 4);
 }
 
-void	rrb(stack_t **b)
+void	rrb(t_stack **b)
 {
-	reverse_ro_logic(stack_t * *b);
+	reverse_ro_logic(b);
 	write(1, "rrb\n"), 4);
 }
 
-void	rrr(stack_t **a, stack_t **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	reverse_ro_logic(stack_t * *a);
-	reverse_ro_logic(stack_t * *b);
+	reverse_ro_logic(a);
+	reverse_ro_logic(b);
 	write(1, "rrr\n"), 4);
 }
