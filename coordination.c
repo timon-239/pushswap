@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   lst_utils_2.c                                     :+:      :+:    :+:    */
+/*   cooridnation.c                                    :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/05/13 16:32:35 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 14:49:02 by tireis          ###   ########.fr        */
+/*   Created: 2026/05/21 14:50:44 by tireis           #+#    #+#              */
+/*   Updated: 2026/05/21 14:58:30 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_stack	*ft_stacknew(int value)
+int	*stack_to_array(t_stack *a)
 {
-	t_stack	*ptr;
+	int		size;
+	int		i;
+	int		*arr;
+	t_stack	*current;
 
-	ptr = malloc(sizeof(t_stack));
-	if (!ptr)
-		return (NULL);
-	ptr->value = value;
-	ptr->index = -1;
-	ptr->next = NULL;
-	ptr->prev = NULL;
-	return (ptr);
+	if (!a)
+		return (0);
+	i = 0;
+	current = a;
+	size = ft_stacksize(a);
+	if (size <= 0)
+		return (0);
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (0);
+	while (current)
+	{
+		arr[i] = current->value;
+		current = current->next;
+		i++;
+	}
+	return (arr);
 }

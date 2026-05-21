@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 13:19:09 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/21 14:48:49 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_stack
 {
 	int value;
-	int stack;
+	int index;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;
