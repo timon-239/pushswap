@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 13:17:03 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 13:17:17 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/21 13:45:42 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	res = 0;
 	i = 0;
+	if (str < "-2147483648" || str > "2147483647")
+		return ("ERROR\n");
 	while (isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
