@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   cooridnation.c                                    :+:      :+:    :+:    */
+/*   coordination.c                                    :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 14:50:44 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 14:58:30 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/28 13:17:04 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*stack_to_array(t_stack *a)
+static int	*stack_to_array(t_stack *a)
 {
 	int		size;
 	int		i;
@@ -36,4 +36,61 @@ int	*stack_to_array(t_stack *a)
 		i++;
 	}
 	return (arr);
+}
+
+static void	sort_array(int *arr, int size)
+{
+	int	i;
+	int	temp;
+	int	swapped;
+
+	swapped = 1;
+	while (swapped)
+	{
+		swapped = 0;
+		i = 0;
+		while (i < size - 1)
+		{
+			if (arr[i] > arr[i + 1])
+			{
+				temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+				swapped = 1;
+			}
+			i++;
+		}
+	}
+}
+
+static int	find_index(int *arr, int size, int value)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == value)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	assign_index(t_stack *a)
+{
+	int		*arr;
+	int		size;
+	t_stack	*tmp;
+
+	tmp = a;
+	size = ft_stacksize(a);
+	arr = stack_to_array(a);
+	sort_array(size, arr);
+	while (tmp)
+	{
+		tmp->index = find_index(arr, size, tmp->value);
+		tmp = tmp->next;
+	}
+	free(arr);
 }
