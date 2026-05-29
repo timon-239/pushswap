@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/18 14:03:04 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 13:14:56 by tireis          ###   ########.fr        */
+/*   Updated: 2026/05/29 15:42:00 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_num(char *str)
 int	has_duplicates(t_stack *stack)
 {
 	t_stack	*current;
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (stack == NULL || stack->next == NULL)
 		return (0);
@@ -41,7 +41,7 @@ int	has_duplicates(t_stack *stack)
 	while (current->next != NULL)
 	{
 		temp = current->next;
-		while(temp != NULL)
+		while (temp != NULL)
 		{
 			if (temp->value == current->value)
 				return (1);
@@ -53,6 +53,7 @@ int	has_duplicates(t_stack *stack)
 }
 /*
 #include <stdio.h>
+
 int main (void){
 	t_stack *node1;
 	t_stack *node2;
