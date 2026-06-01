@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 14:48:49 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/01 13:37:46 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_rotate_logic(t_stack **stack);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 int	ft_atoi(const char *str);
+void	sort_simple(t_stack **a, t_stack **b);
+
 
 
 

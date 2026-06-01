@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   coordination.c                                    :+:      :+:    :+:    */
+/*   index.c                                           :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 14:50:44 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/28 13:17:04 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/01 12:44:53 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	assign_index(t_stack *a)
 	tmp = a;
 	size = ft_stacksize(a);
 	arr = stack_to_array(a);
-	sort_array(size, arr);
+	sort_array(arr, size);
 	while (tmp)
 	{
 		tmp->index = find_index(arr, size, tmp->value);
