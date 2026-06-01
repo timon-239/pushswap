@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/14 14:34:02 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/15 15:05:03 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/01 14:05:26 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -18,7 +18,7 @@ void	reverse_ro_logic(t_stack **stack)
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	last = ft_stacklast(stack);
+	last = ft_stacklast(*stack);
 	prev_to_last = last->prev;
 	prev_to_last->next = NULL;
 	last->next = *stack;
@@ -30,18 +30,18 @@ void	reverse_ro_logic(t_stack **stack)
 void	rra(t_stack **a)
 {
 	reverse_ro_logic(a);
-	write(1, "rra\n"), 4);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b)
 {
 	reverse_ro_logic(b);
-	write(1, "rrb\n"), 4);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
 	reverse_ro_logic(a);
 	reverse_ro_logic(b);
-	write(1, "rrr\n"), 4);
+	write(1, "rrr\n", 4);
 }

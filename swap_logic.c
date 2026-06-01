@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:40:20 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/14 13:16:38 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/01 14:05:56 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -44,7 +44,7 @@ void	sb(t_stack **stack_b)
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap_logic(stack_a);
-	ft_swap_logic(btack_b);
+	ft_swap_logic(stack_b);
 	write(1, "ss\n", 3);
 }
 /*#include <stdio.h>
