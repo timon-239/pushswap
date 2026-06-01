@@ -6,13 +6,13 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 12:43:24 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/01 14:11:30 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/01 14:35:44 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_three(t_stack **a)
+void	sort_three(t_stack **a)
 {
 	int	top;
 	int	mid;
@@ -39,7 +39,7 @@ static void	sort_three(t_stack **a)
 		ra(a);
 }
 
-static int	get_pos_of_index(t_stack *stack, int target_index)
+int	get_pos_of_index(t_stack *stack, int target_index)
 {
 	t_stack	*current;
 	int		i;
@@ -55,7 +55,7 @@ static int	get_pos_of_index(t_stack *stack, int target_index)
 	}
 	return (-1);
 }
-static void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
+void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 {
 	int	size;
 	int	pos;
