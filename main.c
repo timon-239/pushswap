@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/18 14:27:59 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/01 14:09:42 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/04 13:55:18 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,7 @@ int	main(int argc, char **argv)
 		if (ft_stacksize(a) <= 5)
 			sort_simple(&a, &b);
 		else /* sortbig*/
-		{
-			write(2, "Error\n", 6);
-			ft_freestack(&a);
-			ft_freestack(&b);
-			return (1);
-		}
+			sort_medium(&a, &b);
 	}
 	ft_freestack(&a);
 	ft_freestack(&b);

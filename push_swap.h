@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/01 13:44:14 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/04 14:00:44 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ int	is_num(char *str);
 int	has_duplicates(t_stack *stack);
 void	assign_index(t_stack *a);
 int	is_sorted(t_stack *a);
-
-
-
-
-
-
-
+// simple
+void	sort_three(t_stack **a);
+int	get_pos_of_index(t_stack *stack, int target_index);
+void	push_min_to_b(t_stack **a, t_stack **b, int target_index);
+void	sort_simple(t_stack **a, t_stack **b);
+// medium
+void	sort_medium(t_stack **a, t_stack **b);
+void	push_to_b_in_chunks(t_stack **a, t_stack **b);
+int	get_chunk_size(int size);
+int	get_max_index_value(t_stack *stack);
 
 #endif

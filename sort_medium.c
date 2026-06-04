@@ -6,10 +6,80 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/06/03 12:41:28 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/03 12:41:47 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/04 14:01:55 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_medium(void);
+int	get_chunk_size(int size)
+{
+	if (size <= 100)
+		return (15);
+	else
+		return (30);
+}
+
+int	get_max_index_value(t_stack *stack)
+{
+	int	max;
+
+	if (!stack)
+		return (-1);
+	max = stack->index;
+	while (stack)
+	{
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return (max);
+}
+
+void	push_to_b_in_chunks(t_stack **a, t_stack **b)
+{
+	int	i;
+	int	chunk_size;
+
+	i = 0;
+	chunk_size = get_chunk_size(ft_stacksize(*a));
+	while (ft_stacksize(*a) > 0)
+	{
+		if ((*a)->index <= i)
+		{
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		else if ((*a)->index < i + chunk_size)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
+	}
+}
+void	sort_medium(t_stack **a, t_stack **b)
+{
+	int	max_val;
+	int	pos;
+	int	size;
+
+	push_to_b_in_chunks(a, b);
+	while (ft_stacksize(*b) > 0)
+	{
+		max_val = get_max_index_value(*b);
+		pos = get_pos_of_index(*b, max_val);
+		size = ft_stacksize(*b);
+		while (pos != 0)
+		{
+			if (pos <= size / 2)
+				rb(b);
+			else
+				rrb(b);
+			pos = get_pos_of_index(*b, max_val);
+		}
+		pa(a, b);
+	}
+}
