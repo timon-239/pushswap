@@ -13,18 +13,18 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	check_flag(char *arg, t_mode *mode)
-{
-	if (ft_strcmp(argv[i], "--simple") == 0)
-		return (*mode = MODE_SIMPLE, 1);
-	if (ft_strcmp(argv[i], "--medium") == 0)
-		return (*mode = MODE_MEDIUM, 1);
-	if (ft_strcmp(argv[i], "--complex") == 0)
-		return (*mode = MODE_COMPLEX, 1);
-	if (ft_strcmp(argv[i], "--adaptive") == 0)
-		return (*mode = MODE_ADAPTIVE, 1);
-	return (0);
-}
+// static int	check_flag(char *arg, t_mode *mode)
+// {
+// 	if (ft_strcmp(argv[i], "--simple") == 0)
+// 		return (*mode = MODE_SIMPLE, 1);
+// 	if (ft_strcmp(argv[i], "--medium") == 0)
+// 		return (*mode = MODE_MEDIUM, 1);
+// 	if (ft_strcmp(argv[i], "--complex") == 0)
+// 		return (*mode = MODE_COMPLEX, 1);
+// 	if (ft_strcmp(argv[i], "--adaptive") == 0)
+// 		return (*mode = MODE_ADAPTIVE, 1);
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -41,11 +41,11 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (check_flag(argv[i], mode)
-		{
-			i++;
-			continue ;
-		}
+		// if (check_flag(argv[i], mode)
+		// {
+		// 	i++;
+		// 	continue ;
+		// }
 		if (!is_num(argv[i]))
 		{
 			write(2, "Error\n", 6);
@@ -69,13 +69,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	assign_index(a);
-	if (!is_sorted(a))
-	{
-		if (ft_stacksize(a) <= 5)
-			sort_simple(&a, &b);
-		else /* sortbig*/
-			sort_medium(&a, &b);
-	}
+	if(!is_sorted(a))
+		sort_simple(&a, &b);
+	// if (!is_sorted(a))
+	// {
+	// 	if (ft_stacksize(a) <= 5)
+	// 		sort_simple(&a, &b);
+	// 	else /* sortbig*/
+	// 		sort_medium(&a, &b);
+	// }
 	ft_freestack(&a);
 	ft_freestack(&b);
 	return (0);

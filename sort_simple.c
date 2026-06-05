@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   sort_simple.c                                     :+:      :+:    :+:    */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 12:43:24 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/01 14:35:44 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/05 14:25:27 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	sort_three(t_stack **a)
 	top = (*a)->index;
 	mid = (*a)->next->index;
 	bot = (*a)->next->next->index;
-	if (top == 1 && mid == 0 && bot == 2)
+	if (top > mid && mid < bot && top < bot)
 		sa(a);
-	else if (top == 2 && mid == 1 && bot == 0)
+	else if (top > mid && mid > bot)
 	{
 		ra(a);
 		sa(a);
 	}
-	else if (top == 0 && mid == 2 && bot == 1)
+	else if (top < mid && mid > bot && top < bot)
 	{
 		sa(a);
 		ra(a);
 	}
-	else if (top == 1 && mid == 2 && bot == 0)
+	else if (top < mid && mid > bot && top > bot)
 		rra(a);
-	else if (top == 2 && mid == 0 && bot == 1)
+	else if (top > mid && mid < bot && top > bot)
 		ra(a);
 }
 
@@ -60,15 +60,15 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 	int	size;
 	int	pos;
 
-	pos = get_pos_of_index(*a, 0);
+	pos = get_pos_of_index(*a, target_index);
 	size = ft_stacksize(*a);
 	while (pos != 0)
 	{
-		if (pos <= size / 2) /*FALLS OBERE HÄLFTE DES STAKCS RA*/
+		if (pos <= size / 2) /*FALLS OBERE HÄLFTE DES STACKS RA*/
 			ra(a);
 		else
 			rra(a);
-		pos = get_pos_of_index(*a, 0);
+		pos = get_pos_of_index(*a, target_index);
 	}
 	pb(a, b);
 }
@@ -76,24 +76,22 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 void	sort_simple(t_stack **a, t_stack **b)
 {
 	int	size;
+	int target;
 
+	target = 0;
 	size = ft_stacksize(*a);
 	if (size == 2)
+	{
 		sa(a);
-	else if (size == 3)
-		sort_three(a);
-	else if (size == 4)
-	{
-		push_min_to_b(a, b, 0);
-		sort_three(a);
-		pa(a, b);
+		return ;
 	}
-	else if (size == 5)
+	while (size > 3)	
 	{
-		push_min_to_b(a, b, 0);
-		push_min_to_b(a, b, 1);
-		sort_three(a);
-		pa(a, b);
-		pa(a, b);
+		push_min_to_b(a, b, target);
+		target++;
+		size = ft_stacksize(*a);
 	}
+	sort_three(a);
+	while (*b  != NULL)
+		pa(a, b);
 }

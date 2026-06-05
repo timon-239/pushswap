@@ -39,6 +39,7 @@ t_stack	*ft_stacklast(t_stack *stack);
 t_stack *ft_stacknew(int value);
 void	ft_stack_sa(t_stack **stack);
 void	ft_freestack(t_stack **stack);
+int	ft_strcmp(char *s1, char *s2);
 //BASICS
 void	ft_swap_logic(t_stack **stack);
 void	sa(t_stack **stack_a);
