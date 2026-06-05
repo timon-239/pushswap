@@ -6,12 +6,25 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/18 14:27:59 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/04 13:55:18 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/04 21:56:54 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+static int	check_flag(char *arg, t_mode *mode)
+{
+	if (ft_strcmp(argv[i], "--simple") == 0)
+		return (*mode = MODE_SIMPLE, 1);
+	if (ft_strcmp(argv[i], "--medium") == 0)
+		return (*mode = MODE_MEDIUM, 1);
+	if (ft_strcmp(argv[i], "--complex") == 0)
+		return (*mode = MODE_COMPLEX, 1);
+	if (ft_strcmp(argv[i], "--adaptive") == 0)
+		return (*mode = MODE_ADAPTIVE, 1);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -28,6 +41,11 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (check_flag(argv[i], mode)
+		{
+			i++;
+			continue ;
+		}
 		if (!is_num(argv[i]))
 		{
 			write(2, "Error\n", 6);

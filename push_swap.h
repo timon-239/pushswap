@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/04 14:00:44 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/04 21:58:35 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+typedef enum e_mode {
+	MODE_AUTO,
+	MODE_SIMPLE,
+	MODE_MEDIUM,
+	MODE_COMPLEX,
+	MODE_ADAPTIVE,
+} t_mode;
 
 typedef struct s_stack
 {
