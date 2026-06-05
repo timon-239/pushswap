@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/04 21:58:35 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/05 13:19:58 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	sort_medium(t_stack **a, t_stack **b);
 void	push_to_b_in_chunks(t_stack **a, t_stack **b);
 int	get_chunk_size(int size);
 int	get_max_index_value(t_stack *stack);
+int disorder_metric(t_stack *a);
 
 #endif

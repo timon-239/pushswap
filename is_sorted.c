@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 13:53:58 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 14:34:13 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/05 13:19:34 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,36 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+
+int	disorder_metric(t_stack *a)
+{
+	int	mistakes;
+	int	total_pairs;
+	int	i;
+	int	j;
+	int	size;
+
+	size = ft_stacksize(a);
+	mistakes = 0;
+	total_pairs = 0;
+	i = 0;
+	if (size <= 1)
+		return (0);
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			total_pairs += 1;
+			if (a[i] > a[j])
+				mistakes += 1;
+			j++;
+		}
+		i++;
+	}
+	return ((mistakes * 100) / total_pairs);
+}
+
 /*#include <stdio.h>
 
 int	main(void)
