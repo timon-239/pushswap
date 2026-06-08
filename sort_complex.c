@@ -29,7 +29,6 @@ void sort_complex(t_stack **a, t_stack **b)
 	int max_bits;
 
 	i = 0;
-	assign_index(*a);
 	max_index = get_max_index_value(*a);
 	max_bits = get_max_bits(max_index);
 	size = ft_stacksize(*a);
@@ -46,6 +45,6 @@ void sort_complex(t_stack **a, t_stack **b)
 		}
 		while(*b)
 			pa(a, b);
+		i++;
 	}
-	i++;
 }

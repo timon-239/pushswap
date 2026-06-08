@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	}
 	assign_index(a);
 	if(!is_sorted(a))
-		sort_simple(&a, &b);
+		sort_complex(&a, &b);
 	// if (!is_sorted(a))
 	// {
 	// 	if (ft_stacksize(a) <= 5)
