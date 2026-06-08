@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 int get_max_bits(int max_index)
 {
@@ -32,7 +32,7 @@ void sort_complex(t_stack **a, t_stack **b)
 	assign_index(*a);
 	max_index = get_max_index_value(*a);
 	max_bits = get_max_bits(max_index);
-	size = stack_size(*a);
+	size = ft_stacksize(*a);
 	while (i < max_bits)
 	{
 		j = 0;
