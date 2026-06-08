@@ -6,20 +6,39 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/06/03 12:41:28 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/04 14:01:55 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/08 13:14:45 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_chunk_size(int size)
+static int	ft_sqrt_simple(int n)
 {
-	if (size <= 100)
-		return (15);
-	else
-		return (30);
+	int	i;
+
+	i = 1;
+	if (n <= 0)
+		return (0);
+	while (i * i <= n)
+	{
+		if (i > 46340) // Verhindert Overflow bei i*i
+			break ;
+		i++;
+	}
+	return (i - 1);
 }
 
+static int	get_chunk_size(int size)
+{
+	int	chunk;
+
+	if (size <= 0)
+		return (0);
+	chunk = ft_sqrt_simple(size);
+	if (chunk <= 1)
+		return (1);
+	return (chunk);
+}
 int	get_max_index_value(t_stack *stack)
 {
 	int	max;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   sort_simple.c                                     :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 12:43:24 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/05 14:25:27 by eboualla         ###   ########.fr       */
+/*   Updated: 2026/06/08 13:04:25 by tireis          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 void	sort_simple(t_stack **a, t_stack **b)
 {
 	int	size;
-	int target;
+	int	target;
 
 	target = 0;
 	size = ft_stacksize(*a);
@@ -85,13 +85,13 @@ void	sort_simple(t_stack **a, t_stack **b)
 		sa(a);
 		return ;
 	}
-	while (size > 3)	
+	while (size > 3)
 	{
 		push_min_to_b(a, b, target);
 		target++;
 		size = ft_stacksize(*a);
 	}
 	sort_three(a);
-	while (*b  != NULL)
+	while (*b != NULL)
 		pa(a, b);
 }
