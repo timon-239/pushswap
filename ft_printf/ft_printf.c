@@ -6,38 +6,35 @@
 /*   By: eboualla <eboualla@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 19:25:37 by eboualla          #+#    #+#             */
-/*   Updated: 2026/06/09 19:16:44 by eboualla         ###   ########.fr       */
+/*   Updated: 2026/06/15 19:05:05 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	check_conv(int fd, const char *format, va_list *args, int i, int *count)
+static void	check_conv(int fd, va_list *args, char c, int *count)
 {
-	char	des;
-
-	des = format[i + 1];
-	if (des == 'c')
+	if (c == 'c')
 		ft_putchar(fd, va_arg(*args, int), count);
-	else if (des == 's')
+	else if (c == 's')
 		handle_s(fd, va_arg(*args, char *), count);
-	else if (des == 'p')
+	else if (c == 'p')
 		handle_p(fd, va_arg(*args, void *), "0123456789abcdef", count);
-	else if (des == 'd' || des == 'i')
+	else if (c == 'd' || c == 'i')
 		handle_i(fd, va_arg(*args, int), count);
-	else if (des == 'u')
+	else if (c == 'u')
 		handle_u(fd, va_arg(*args, unsigned int), "0123456789", count);
-	else if (des == 'x')
+	else if (c == 'x')
 		handle_x(fd, va_arg(*args, unsigned int), "0123456789abcdef", count);
-	else if (des == 'X')
+	else if (c == 'X')
 		handle_x(fd, va_arg(*args, unsigned int), "0123456789ABCDEF", count);
-	else if (des == '%')
+	else if (c == '%')
 		ft_putchar(fd, '%', count);
-	else if (des == 'f')
+	else if (c == 'f')
 		handle_f(fd, va_arg(*args, double), count);
 	else
 	{
 		ft_putchar(fd, '%', count);
-		ft_putchar(fd, des, count);
+		ft_putchar(fd, c, count);
 	}
 	return ;
 }
@@ -55,7 +52,7 @@ int	ft_printf(int fd, const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
-			check_conv(fd, format, &args, i, &count);
+			check_conv(fd, &args, format[i + 1], &count);
 			i++;
 		}
 		else if (format[i] == '%' && !format[i + 1])
@@ -81,6 +78,12 @@ int	main(void)
 	int				res1;
 	int				res2;
 	void			*ptr;
+	int				meins;
+	int				original;
+int			mein1 = ft_printf("abc%");
+int			res1 = printf("abc%");
+int			mein2 = ft_printf("ab%y");
+int			res2 = printf("ab%y");
 
 	hex = 44;
 	heX = 44;
@@ -95,28 +98,19 @@ int	main(void)
 	res2 = printf("int%d, char%c, string%s, hex%x, heX%X, u%u, void%p also %%",
 			a, c, s, hex, heX, u, ptr);
 	printf("\n");
-	printf("return (1 = %d, return 2 = %d", res1, res2));
+	printf("return (1 = %d, return (2 = %d", res1, res2)));
 	printf("\n");
 	return (0);
-	
-
-
-	int meins = ft_printf("hallo %z hallo");
+	meins = ft_printf("hallo %z hallo");
 	printf("\n");
-	int original = printf("hallo %z hallo");
+	original = printf("hallo %z hallo");
 	printf("\n");
-
 	printf("mein = %d,\n original = %d", meins, original);
-
-int mein1 = ft_printf("abc%");
 printf("\n");
-int res1 = printf("abc%");
 printf("\n");
 printf("mein1: %d,\nres1: %d", mein1, res1);
 printf("\n");
-int mein2 = ft_printf("ab%y");
 printf("\n");
-int res2 = printf("ab%y");
 printf("\n");
 printf("mein2: %d,\n res2: %d", mein2, res2);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   sort_simple.c                                     :+:      :+:    :+:    */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/21 12:43:24 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/08 13:04:25 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/15 18:59:24 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	get_pos_of_index(t_stack *stack, int target_index)
 	return (-1);
 }
 
-void	push_min_to_b(t_stack **a, t_stack **b, int target_index,  t_bench *bench)
+void	push_min_to_b(t_stack **a, t_stack **b, int target_index,
+		t_bench *bench)
 {
 	int	size;
 	int	pos;
@@ -74,7 +75,7 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index,  t_bench *bench)
 	pb(a, b, bench);
 }
 
-void	sort_simple(t_stack **a, t_stack **b,  t_bench *bench)
+void	sort_simple(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int	size;
 	int	target;

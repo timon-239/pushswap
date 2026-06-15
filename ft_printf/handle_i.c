@@ -6,7 +6,7 @@
 /*   By: eboualla <eboualla@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 08:40:03 by eboualla          #+#    #+#             */
-/*   Updated: 2026/05/11 13:43:08 by eboualla         ###   ########.fr       */
+/*   Updated: 2026/06/15 18:59:13 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -49,11 +49,9 @@ void	handle_f(int fd, double n, int *count)
 		ft_putchar(fd, '-', count);
 		n = -n;
 	}
-
 	n += 0.005;
 	intpart = (long long)n;
 	fracpart = (long long)((n - intpart) * 100);
-
 	handle_i(fd, intpart, count);
 	ft_putchar(fd, '.', count);
 	print_2digits(fd, fracpart, count);

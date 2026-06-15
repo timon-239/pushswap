@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   lst_utils_2.c                                     :+:      :+:    :+:    */
+/*   lst_utils_2.c                                      :+:      :+:    :+:   */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:32:35 by tireis           #+#    #+#              */
-/*   Updated: 2026/05/21 14:49:02 by tireis          ###   ########.fr        */
+/*   Updated: 2026/06/15 19:08:01 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -52,21 +52,25 @@ float	disorder_metric(t_stack *a)
 {
 	float	mistakes;
 	float	total_pairs;
-	int		size;
-	t_stack	*current;
+	t_stack	*i;
+	t_stack	*j;
 
-	size = ft_stacksize(a);
 	mistakes = 0;
 	total_pairs = 0;
-	if (size <= 1)
-		return (0);
-	while (a->next != NULL && current->next != NULL)
+	i = a;
+	while (i)
 	{
-		current = a->next;
-		total_pairs += 1;
-		if (a->value > current->value)
-			mistakes += 1;
-		a = a->next;
+		j = i->next;
+		while (j)
+		{
+			total_pairs++;
+			if (i->value > j->value)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
 	}
+	if (total_pairs == 0)
+		return (0);
 	return (mistakes / total_pairs);
 }
