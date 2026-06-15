@@ -55,6 +55,7 @@ int	get_pos_of_index(t_stack *stack, int target_index)
 	}
 	return (-1);
 }
+
 void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 {
 	int	size;
@@ -64,7 +65,7 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 	size = ft_stacksize(*a);
 	while (pos != 0)
 	{
-		if (pos <= size / 2) /*FALLS OBERE HÄLFTE DES STACKS RA*/
+		if (pos <= size / 2)
 			ra(a);
 		else
 			rra(a);

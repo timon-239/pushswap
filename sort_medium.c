@@ -21,7 +21,7 @@ static int	ft_sqrt_simple(int n)
 		return (0);
 	while (i * i <= n)
 	{
-		if (i > 46340) // Verhindert Overflow bei i*i
+		if (i > 46340)
 			break ;
 		i++;
 	}
@@ -39,6 +39,7 @@ static int	get_chunk_size(int size)
 		return (1);
 	return (chunk);
 }
+
 int	get_max_index_value(t_stack *stack)
 {
 	int	max;
@@ -79,6 +80,7 @@ void	push_to_b_in_chunks(t_stack **a, t_stack **b)
 			ra(a);
 	}
 }
+
 void	sort_medium(t_stack **a, t_stack **b)
 {
 	int	max_val;

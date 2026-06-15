@@ -34,3 +34,39 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (*s1 - *s2);
 }
+
+int	is_sorted(t_stack *a)
+{
+	if (!a || !a->next)
+		return (1);
+	while (a->next != NULL)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
+float	disorder_metric(t_stack *a)
+{
+	float	mistakes;
+	float	total_pairs;
+	int		size;
+	t_stack	*current;
+
+	size = ft_stacksize(a);
+	mistakes = 0;
+	total_pairs = 0;
+	if (size <= 1)
+		return (0);
+	while (a->next != NULL && current->next != NULL)
+	{
+		current = a->next;
+		total_pairs += 1;
+		if (a->value > current->value)
+			mistakes += 1;
+		a = a->next;
+	}
+	return (mistakes / total_pairs);
+}

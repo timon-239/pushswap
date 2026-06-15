@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
+
 typedef enum e_mode
 {
 	MODE_AUTO,
@@ -57,7 +59,7 @@ void				ft_rotate_logic(t_stack **stack);
 void				ra(t_stack **a);
 void				rb(t_stack **b);
 // rest
-int					ft_atoi(const char *str);
+long					ft_atol(const char *str);
 void				sort_simple(t_stack **a, t_stack **b);
 int					is_num(char *str);
 int					has_duplicates(t_stack *stack);
@@ -71,9 +73,8 @@ void				sort_simple(t_stack **a, t_stack **b);
 // medium
 void				sort_medium(t_stack **a, t_stack **b);
 void				push_to_b_in_chunks(t_stack **a, t_stack **b);
-static int					get_chunk_size(int size);
 int					get_max_index_value(t_stack *stack);
-int					disorder_metric(t_stack *a);
+float				disorder_metric(t_stack *a);
 // complex
 void				sort_complex(t_stack **a, t_stack **b);
 int					get_max_bits(int max_index);

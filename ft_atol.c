@@ -27,11 +27,11 @@ static int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int		sign;
-	int		res;
-	size_t	i;
+	long		sign;
+	long		res;
+	size_t		i;
 
 	sign = 1;
 	res = 0;

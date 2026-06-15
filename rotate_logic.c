@@ -29,6 +29,7 @@ void	ft_rotate_logic(t_stack **stack)
 	first->prev = last;
 	first->next = NULL;
 }
+
 void	ra(t_stack **a)
 {
 	ft_rotate_logic(a);
