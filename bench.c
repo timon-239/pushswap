@@ -16,27 +16,37 @@ void	bench_init(t_bench *b)
 	b->total = 0;
 }
 
+static char	*bench_helper(t_mode mode, double disorder)
+{
+	if (mode == MODE_SIMPLE)
+		return ("Simple / O(n²)");
+	if (mode == MODE_MEDIUM)
+		return ("Medium / O(nsqrtn)");
+	if (mode == MODE_COMPLEX)
+		return ("Complex / O(n log n)");
+	if (disorder < 0.2)
+		return ("Adaptive / O(n²)");
+	if (disorder < 0.5)
+		return ("Adaptive / O(nsqrtn)");
+	return ("Adaptive / O(n log n)");
+}
+
 void	print_bench(t_bench *b, double disorder, t_mode mode)
 {
-    disorder = disorder * 100;
-
-    char *mode_str;
+	char *mode_str;
 
 	if (!b)
-		return;
+		return ;
 
-	if (mode == MODE_SIMPLE)
-		mode_str = "Simple / O(n²)";
-	else if (mode == MODE_MEDIUM)
-		mode_str = "Medium / O(nsqrtn)";
-	else if (mode == MODE_COMPLEX)
-		mode_str = "Complex / O(n log n)";
-	else
-		mode_str = "Adaptive";
+	mode_str = bench_helper(mode, disorder);
+
+	disorder = disorder * 100;
+
 	ft_printf(2, "[bench] disorder: %f%\n", disorder);
 	ft_printf(2, "[bench] strategy: %s\n", mode_str);
 	ft_printf(2, "[bench] total ops: %d\n", b->total);
-
-	ft_printf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", b->sa, b->sb, b->ss, b->pa, b->pb);
-    ft_printf(2, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
+	ft_printf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", b->sa, b->sb,
+		b->ss, b->pa, b->pb);
+	ft_printf(2, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+		b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }
