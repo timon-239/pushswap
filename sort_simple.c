@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_bench *bench)
 {
 	int	top;
 	int	mid;
@@ -22,21 +22,21 @@ void	sort_three(t_stack **a)
 	mid = (*a)->next->index;
 	bot = (*a)->next->next->index;
 	if (top > mid && mid < bot && top < bot)
-		sa(a);
+		sa(a, bench);
 	else if (top > mid && mid > bot)
 	{
-		ra(a);
-		sa(a);
+		ra(a, bench);
+		sa(a, bench);
 	}
 	else if (top < mid && mid > bot && top < bot)
 	{
-		sa(a);
-		ra(a);
+		sa(a, bench);
+		ra(a, bench);
 	}
 	else if (top < mid && mid > bot && top > bot)
-		rra(a);
+		rra(a, bench);
 	else if (top > mid && mid < bot && top > bot)
-		ra(a);
+		ra(a, bench);
 }
 
 int	get_pos_of_index(t_stack *stack, int target_index)
@@ -56,7 +56,7 @@ int	get_pos_of_index(t_stack *stack, int target_index)
 	return (-1);
 }
 
-void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
+void	push_min_to_b(t_stack **a, t_stack **b, int target_index,  t_bench *bench)
 {
 	int	size;
 	int	pos;
@@ -66,15 +66,15 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index)
 	while (pos != 0)
 	{
 		if (pos <= size / 2)
-			ra(a);
+			ra(a, bench);
 		else
-			rra(a);
+			rra(a, bench);
 		pos = get_pos_of_index(*a, target_index);
 	}
-	pb(a, b);
+	pb(a, b, bench);
 }
 
-void	sort_simple(t_stack **a, t_stack **b)
+void	sort_simple(t_stack **a, t_stack **b,  t_bench *bench)
 {
 	int	size;
 	int	target;
@@ -83,16 +83,16 @@ void	sort_simple(t_stack **a, t_stack **b)
 	size = ft_stacksize(*a);
 	if (size == 2)
 	{
-		sa(a);
+		sa(a, bench);
 		return ;
 	}
 	while (size > 3)
 	{
-		push_min_to_b(a, b, target);
+		push_min_to_b(a, b, target, bench);
 		target++;
 		size = ft_stacksize(*a);
 	}
-	sort_three(a);
+	sort_three(a, bench);
 	while (*b != NULL)
-		pa(a, b);
+		pa(a, b, bench);
 }

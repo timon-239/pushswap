@@ -1,6 +1,42 @@
-void    bench()
+#include "push_swap.h"
+
+void	bench_init(t_bench *b)
 {
-    float f = disorder_metric(a);
-    
-    ft_printf("[bench] disorder: %f", (f * 100))
+	b->sa = 0;
+	b->sb = 0;
+	b->ss = 0;
+	b->pa = 0;
+	b->pb = 0;
+	b->ra = 0;
+	b->rb = 0;
+	b->rr = 0;
+	b->rra = 0;
+	b->rrb = 0;
+	b->rrr = 0;
+	b->total = 0;
+}
+
+void	print_bench(t_bench *b, double disorder, t_mode mode)
+{
+    disorder = disorder * 100;
+
+    char *mode_str;
+
+	if (!b)
+		return;
+
+	if (mode == MODE_SIMPLE)
+		mode_str = "Simple / O(n²)";
+	else if (mode == MODE_MEDIUM)
+		mode_str = "Medium / O(nsqrtn)";
+	else if (mode == MODE_COMPLEX)
+		mode_str = "Complex / O(n log n)";
+	else
+		mode_str = "Adaptive";
+	ft_printf(2, "[bench] disorder: %f%\n", disorder);
+	ft_printf(2, "[bench] strategy: %s\n", mode_str);
+	ft_printf(2, "[bench] total ops: %d\n", b->total);
+
+	ft_printf(2, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", b->sa, b->sb, b->ss, b->pa, b->pb);
+    ft_printf(2, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", b->ra, b->rb, b->rr, b->rra, b->rrb, b->rrr);
 }

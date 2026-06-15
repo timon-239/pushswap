@@ -30,14 +30,18 @@ void	ft_rotate_logic(t_stack **stack)
 	first->next = NULL;
 }
 
-void	ra(t_stack **a)
+void	ra(t_stack **a, t_bench *bench)
 {
 	ft_rotate_logic(a);
-	write(1, "ra\n", 3);
+	bench->ra++;
+	bench->total++;
+	ft_printf(1, "ra\n");
 }
 
-void	rb(t_stack **b)
+void	rb(t_stack **b, t_bench *bench)
 {
 	ft_rotate_logic(b);
-	write(1, "rb\n", 3);
+	bench->rb++;
+	bench->total++;
+	ft_printf(1, "rb\n");
 }

@@ -13,16 +13,18 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	check_flag(char *argv, t_mode *mode)
+static int	check_flag(char *argv, t_config *cfg)
 {
 	if (ft_strcmp(argv, "--simple") == 0)
-		return (*mode = MODE_SIMPLE, 1);
+		return (cfg->mode = MODE_SIMPLE, 1);
 	if (ft_strcmp(argv, "--medium") == 0)
-		return (*mode = MODE_MEDIUM, 1);
+		return (cfg->mode = MODE_MEDIUM, 1);
 	if (ft_strcmp(argv, "--complex") == 0)
-		return (*mode = MODE_COMPLEX, 1);
+		return (cfg->mode = MODE_COMPLEX, 1);
 	if (ft_strcmp(argv, "--adaptive") == 0)
-		return (*mode = MODE_ADAPTIVE, 1);
+		return (cfg->mode = MODE_ADAPTIVE, 1);
+	if (ft_strcmp(argv, "--bench") == 0)
+		return (cfg->bench = 1, 1);
 	return (0);
 }
 
@@ -33,17 +35,19 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	int		val;
 	t_stack	*new;
-	t_mode mode;
+	t_bench bench;
+	t_config cfg;
 
+	cfg.mode = MODE_ADAPTIVE;
+	cfg.bench = 0;
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
 		return (0);
 	i = 1;
-	mode = MODE_ADAPTIVE;
 	while (i < argc)
 	{
-		if (check_flag(argv[i], &mode))
+		if (check_flag(argv[i], &cfg))
 		{
 			i++;
 			continue ;
@@ -71,24 +75,32 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	float disorder = disorder_metric(a);
-	ft_printf("%f\n", disorder);
 	assign_index(a);
 	if(!is_sorted(a))
 	{
-		if (mode == MODE_SIMPLE)
-			sort_simple(&a, &b);
-		else if (mode == MODE_MEDIUM)
-			sort_medium(&a, &b);
-		else if (mode == MODE_COMPLEX)
-			sort_complex(&a, &b);
-		else if (mode == MODE_ADAPTIVE)
+		if (cfg.bench)
+			bench_init(&bench);
+		if (cfg.bench)
+		{
+			print_bench(&bench, disorder, cfg.mode);
+			ft_freestack(&a);
+			ft_freestack(&b);
+			return (0);
+		}
+		if (cfg.mode == MODE_SIMPLE)
+			sort_simple(&a, &b, &bench);
+		else if (cfg.mode == MODE_MEDIUM)
+			sort_medium(&a, &b, &bench);
+		else if (cfg.mode == MODE_COMPLEX)
+			sort_complex(&a, &b, &bench);
+		else
 		{
 			if (disorder < 0.2)
-				sort_simple(&a, &b);
+				sort_simple(&a, &b, &bench);
 			else if (disorder < 0.5)
-				sort_medium(&a, &b);
+				sort_medium(&a, &b, &bench);
 			else
-				sort_complex(&a, &b);
+				sort_complex(&a, &b, &bench);
 		}
 	}
 	ft_freestack(&a);

@@ -29,23 +29,29 @@ void	ft_swap_logic(t_stack **stack)
 	*stack = second;
 }
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, t_bench *bench)
 {
 	ft_swap_logic(stack_a);
-	write(1, "sa\n", 3);
+	bench->sa++;
+	bench->total++;
+	ft_printf(1, "sa\n");
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, t_bench *bench)
 {
 	ft_swap_logic(stack_b);
-	write(1, "sb\n", 3);
+	bench->sb++;
+	bench->total++;
+	ft_printf(1, "sb\n");
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	ft_swap_logic(stack_a);
 	ft_swap_logic(stack_b);
-	write(1, "ss\n", 3);
+	bench->ss++;
+	bench->total++;
+	ft_printf(1, "ss\n");
 }
 /*#include <stdio.h>
 

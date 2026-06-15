@@ -29,16 +29,20 @@ void	ft_push_logic(t_stack **dst, t_stack **src)
 	*dst = tmp;
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, t_bench *bench)
 {
 	ft_push_logic(a, b);
-	write(1, "pa\n", 3);
+	bench->pa++;
+	bench->total++;
+	ft_printf(1, "pa\n");
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, t_bench *bench)
 {
 	ft_push_logic(b, a);
-	write(1, "pb\n", 3);
+	bench->pb++;
+	bench->total++;
+	ft_printf(1, "pb\n");
 }
 /*
 int	main(void)

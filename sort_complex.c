@@ -22,7 +22,7 @@ int	get_max_bits(int max_index)
 	return (bits);
 }
 
-void	sort_complex(t_stack **a, t_stack **b)
+void	sort_complex(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int	i;
 	int	j;
@@ -40,13 +40,13 @@ void	sort_complex(t_stack **a, t_stack **b)
 		while (j < size)
 		{
 			if ((((*a)->index >> i) & 1) == 0)
-				pb(a, b);
+				pb(a, b, bench);
 			else
-				ra(a);
+				ra(a, bench);
 			j++;
 		}
 		while (*b)
-			pa(a, b);
+			pa(a, b, bench);
 		i++;
 	}
 }

@@ -27,21 +27,27 @@ void	reverse_ro_logic(t_stack **stack)
 	*stack = last;
 }
 
-void	rra(t_stack **a)
+void	rra(t_stack **a, t_bench *bench)
 {
 	reverse_ro_logic(a);
-	write(1, "rra\n", 4);
+	bench->rra++;
+	bench->total++;
+	ft_printf(1, "rra\n");
 }
 
-void	rrb(t_stack **b)
+void	rrb(t_stack **b, t_bench *bench)
 {
 	reverse_ro_logic(b);
-	write(1, "rrb\n", 4);
+	bench->rrb++;
+	bench->total++;
+	ft_printf(1, "rrb\n");
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	reverse_ro_logic(a);
 	reverse_ro_logic(b);
-	write(1, "rrr\n", 4);
+	bench->rrr++;
+	bench->total++;
+	ft_printf(1, "rrr\n");
 }
