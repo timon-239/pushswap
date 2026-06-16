@@ -17,11 +17,15 @@ This project was completed as a 2-learner group activity. Both learners contribu
   - Implemented the mandatory mathematical `disorder_metric`.
   - **Simple Algorithm (`MODE_SIMPLE`)**: Designed and wrote the specialized sorting logic for minimal sets ($N \le 5$).
   - **Medium Algorithm (`MODE_MEDIUM`)**: Conceived and implemented the square-root-based chunking method.
-  - Developed the live telemetry and operational tracking module (`t_bench`).
 
 - **`eboulla`**:
   - **Complex Algorithm (`MODE_COMPLEX`)**: Researched and implemented the bitwise Radix Sort adaptation for large-scale data ($N \ge 500$).
   - Developed and optimized the global input pre-indexing matrix (`index.c`).
+  - Developed the live telemetry and operational tracking module (`t_bench`).
+
+- **Jointly**:
+  - Designed and implemented the CLI flags (`--simple`, `--medium`, `--complex`, `--adaptive`) for manual strategy selection.
+  - Rewrote the standard `printf` as `ft_dprintf` to support arbitrary file descriptors, enabling clean separation of instruction output (stdout) and error output (stderr).
   - Collaborated on extensive benchmarking, testing, and calibrating the custom adaptive thresholds.
 
 ---
@@ -153,5 +157,44 @@ The 42 project provides an optional `checker` binary that validates whether the 
 
 If the sort is incorrect, `checker` outputs `KO`.
 
----
+### Automated Benchmarking
 
+Use the following shell snippets to benchmark operation counts over multiple random runs.
+
+**100 random elements (target: ≤ 700 operations):**
+```bash
+for i in $(seq 1 100); do
+    ARG=$(shuf -i 0-999 -n 100 | tr '\n' ' ')
+    ./push_swap $ARG | wc -l
+done | awk '{sum+=$1; count++} END {printf "Average: %.1f ops over %d runs\n", sum/count, count}'
+```
+
+**500 random elements (target: ≤ 5000 operations):**
+```bash
+for i in $(seq 1 20); do
+    ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
+    ./push_swap $ARG | wc -l
+done | awk '{sum+=$1; count++} END {printf "Average: %.1f ops over %d runs\n", sum/count, count}'
+```
+
+**Find worst-case run:**
+```bash
+max=0
+for i in $(seq 1 50); do
+    ARG=$(shuf -i 0-499 -n 500 | tr '\n' ' ')
+    ops=$(./push_swap $ARG | wc -l)
+    [ "$ops" -gt "$max" ] && max=$ops
+done
+echo "Worst case: $max operations"
+```
+
+### Expected Performance
+
+| Input Size | Algorithm | Typical Op Count | 42 Grading Ceiling |
+|------------|-----------|------------------|--------------------|
+| $N \le 3$ | `MODE_SIMPLE` | ≤ 2 | — |
+| $N = 5$ | `MODE_SIMPLE` | ≤ 12 | — |
+| $N = 100$ | `MODE_MEDIUM` | ~550–680 | 700 |
+| $N = 500$ | `MODE_COMPLEX` | ~3800–4700 | 5500 |
+
+---
