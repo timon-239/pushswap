@@ -6,7 +6,7 @@
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:03:41 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/15 18:59:45 by eboualla         ###   ########.fr       */
+/*   Updated: 2026/06/16 17:33:16 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void				rb(t_stack **b, t_bench *bench);
 // rest
 long				ft_atol(const char *str);
 char				**ft_split(const char *s, char c);
-char				**ft_freeall(char **arr, size_t i);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+char				**ft_freeall(char **res, int i);
 size_t				ft_strlen(const char *str);
 int					is_num(char *str);
 int					has_duplicates(t_stack *stack);

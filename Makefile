@@ -20,6 +20,7 @@ SRCS    = main.c \
           index.c \
           utils.c \
           utils_2.c \
+          utils_3.c \
           parse_utils.c \
           push_logic.c \
           reverse_rotate.c \

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-char	*ft_strdup(const char *s1)
+static char	*ft_strdup(const char *s1)
 {
 	char	*p1;
 	size_t	len;
@@ -45,7 +45,7 @@ static char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (subs);
 }
 
-static char	**ft_free_array(char **res, int i)
+char	**ft_freeall(char **res, int i)
 {
 	while (i >= 0)
 	{
@@ -96,7 +96,7 @@ char	**ft_split(char const *s, char c)
 				word_len++;
 			res[i++] = ft_substr(s, 0, word_len);
 			if (!res[i - 1])
-				return (ft_free_array(res, i - 2));
+				return (ft_freeall(res, i - 2));
 			s += word_len;
 		}
 	}

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	check_flag(char *argv, t_config *cfg)
 {
@@ -46,7 +45,7 @@ static int	parse_arguments(int argc, char **argv, t_stack **a, t_config *cfg)
 		while (s[j])
 		{
 			if (!parse_token(s[j], a))
-				return (ft_freeall(s, j), 0);
+				return (ft_freeall(s, j), ft_freestack(a), 0);
 			j++;
 		}
 		ft_freeall(s, j);
@@ -54,29 +53,29 @@ static int	parse_arguments(int argc, char **argv, t_stack **a, t_config *cfg)
 	return (1);
 }
 
-static void	sort_mode(t_stack *a, t_stack *b, t_config cfg, float disorder)
+static void	sort_mode(t_stack **a, t_stack **b, t_config cfg, float disorder)
 {
 	t_bench	bench;
 
-	assign_index(a);
-	if (!is_sorted(a))
+	assign_index(*a);
+	if (!is_sorted(*a))
 	{
 		if (cfg.bench)
 			bench_init(&bench);
 		if (cfg.mode == MODE_SIMPLE)
-			sort_simple(&a, &b, &bench);
+			sort_simple(a, b, &bench);
 		else if (cfg.mode == MODE_MEDIUM)
-			sort_medium(&a, &b, &bench);
+			sort_medium(a, b, &bench);
 		else if (cfg.mode == MODE_COMPLEX)
-			sort_complex(&a, &b, &bench);
+			sort_complex(a, b, &bench);
 		else
 		{
 			if (disorder < 0.2)
-				sort_simple(&a, &b, &bench);
+				sort_simple(a, b, &bench);
 			else if (disorder < 0.5)
-				sort_medium(&a, &b, &bench);
+				sort_medium(a, b, &bench);
 			else
-				sort_complex(&a, &b, &bench);
+				sort_complex(a, b, &bench);
 		}
 		if (cfg.bench)
 			print_bench(&bench, disorder, cfg.mode);
@@ -108,7 +107,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	disorder = disorder_metric(a);
-	sort_mode(a, b, cfg, disorder);
+	sort_mode(&a, &b, cfg, disorder);
 	ft_freestack(&a);
 	ft_freestack(&b);
 	return (0);
