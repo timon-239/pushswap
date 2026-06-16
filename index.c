@@ -86,6 +86,8 @@ void	assign_index(t_stack *a)
 	tmp = a;
 	size = ft_stacksize(a);
 	arr = stack_to_array(a);
+	if (!arr)
+		return ;
 	sort_array(arr, size);
 	while (tmp)
 	{
