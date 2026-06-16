@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by tireis, eboulla.*
+*This project has been created as part of the 42 curriculum by tireis, eboualla.*
 
 ## Description
 
@@ -18,7 +18,7 @@ This project was completed as a 2-learner group activity. Both learners contribu
   - **Simple Algorithm (`MODE_SIMPLE`)**: Designed and wrote the specialized sorting logic for minimal sets ($N \le 5$).
   - **Medium Algorithm (`MODE_MEDIUM`)**: Conceived and implemented the square-root-based chunking method.
 
-- **`eboulla`**:
+- **`eboualla`**:
   - **Complex Algorithm (`MODE_COMPLEX`)**: Researched and implemented the bitwise Radix Sort adaptation for large-scale data ($N \ge 500$).
   - Developed and optimized the global input pre-indexing matrix (`index.c`).
   - Developed the live telemetry and operational tracking module (`t_bench`).
@@ -56,27 +56,21 @@ To ensure our algorithms remain unimpacted by the magnitude of input values (e.g
 #### Adaptive Algorithm — `MODE_ADAPTIVE`
 
 - **Threshold Rationale**: The subject mandates a disorder value between 0 and 1, analyzing pair inversions (mistakes over total possible pairs). Our adaptive controller dynamically reads this metric before making a single shift and assigns the target configuration according to these strict parameters:
-  - **Disorder $< 0.2$ (Low Disorder)**: Routes directly to `MODE_SIMPLE` or `MODE_MEDIUM`. In almost-sorted stacks, a Radix sort wastes cycles inspecting bit columns for values already in order. Local shift adjustments are far more cost-effective.
+  - **Disorder $< 0.2$ (Low Disorder)**: Routes directly to `MODE_SIMPLE`. In almost-sorted stacks, a Radix sort wastes cycles inspecting bit columns for values already in order. Local shift adjustments are far more cost-effective.
   - **$0.2 \le$ Disorder $< 0.5$ (Medium Disorder)**: Forces `MODE_MEDIUM`. Chunking proves highly responsive here, grouping local index numbers efficiently with minimal travelling distance.
   - **Disorder $\ge 0.5$ (High Disorder)**: Triggers `MODE_COMPLEX`. High entropy requires a structural algorithm that completely ignores positional bias and sorts data based entirely on binary value columns.
 
 ---
 
-## Installation & Compilation
-
-### Prerequisites
-
-- `gcc` (or `cc`) with C99 or later
-- GNU `make`
-- A POSIX-compatible shell
+## Instructions
 
 ### Build
 
 Clone the repository and compile with the provided `Makefile`. It compiles all required sources including the internal `ft_printf` module and prevents any forbidden relinking behavior:
 
 ```bash
-git clone https://github.com/<your_username>/push_swap.git
-cd push_swap
+git clone https://github.com/timon-239/pushswap.git
+cd pushswap
 make
 ```
 
@@ -91,31 +85,13 @@ Available `make` targets:
 
 ---
 
-## Usage
+### Usage
 
 ```bash
 ./push_swap <integer> [<integer> ...]
 ```
 
 The program reads a space-separated or argument-separated list of unique integers and writes the minimal instruction sequence to standard output.
-
-### Examples
-
-**Sort 5 elements:**
-```bash
-./push_swap 3 0 9 2 7
-```
-
-**Sort from a shell variable:**
-```bash
-ARG="64 -3 42 0 128 -99"
-./push_swap $ARG
-```
-
-**Count the number of operations produced:**
-```bash
-./push_swap $(shuf -i 0-499 -n 100) | wc -l
-```
 
 ### Available Instructions
 
@@ -144,57 +120,16 @@ The program prints `Error` to standard error and exits with code `1` in the foll
 
 ---
 
-## Testing & Benchmarking
+## Resources
 
-### Manual Verification with `checker`
+Usage of man pages  
+https://www.geeksforgeeks.org/cpp/left-shift-right-shift-operators-c-cpp/  
+https://www.w3schools.com/c/c_bitwise_operators.php  
+https://www.geeksforgeeks.org/dsa/external-sorting/  
+https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81  
 
-The 42 project provides an optional `checker` binary that validates whether the generated instruction sequence correctly sorts the input. Pipe `push_swap` output directly into it:
+### AI Usage
 
-```bash
-./push_swap 3 0 9 2 7 | ./checker 3 0 9 2 7
-# Expected output: OK
-```
+ChatGPT was used as a learning assistant during the development of this project.
 
-If the sort is incorrect, `checker` outputs `KO`.
-
-### Automated Benchmarking
-
-Use the following shell snippets to benchmark operation counts over multiple random runs.
-
-**100 random elements (target: ≤ 700 operations):**
-```bash
-for i in $(seq 1 100); do
-    ARG=$(shuf -i 0-999 -n 100 | tr '\n' ' ')
-    ./push_swap $ARG | wc -l
-done | awk '{sum+=$1; count++} END {printf "Average: %.1f ops over %d runs\n", sum/count, count}'
-```
-
-**500 random elements (target: ≤ 5000 operations):**
-```bash
-for i in $(seq 1 20); do
-    ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
-    ./push_swap $ARG | wc -l
-done | awk '{sum+=$1; count++} END {printf "Average: %.1f ops over %d runs\n", sum/count, count}'
-```
-
-**Find worst-case run:**
-```bash
-max=0
-for i in $(seq 1 50); do
-    ARG=$(shuf -i 0-499 -n 500 | tr '\n' ' ')
-    ops=$(./push_swap $ARG | wc -l)
-    [ "$ops" -gt "$max" ] && max=$ops
-done
-echo "Worst case: $max operations"
-```
-
-### Expected Performance
-
-| Input Size | Algorithm | Typical Op Count | 42 Grading Ceiling |
-|------------|-----------|------------------|--------------------|
-| $N \le 3$ | `MODE_SIMPLE` | ≤ 2 | — |
-| $N = 5$ | `MODE_SIMPLE` | ≤ 12 | — |
-| $N = 100$ | `MODE_MEDIUM` | ~550–680 | 700 |
-| $N = 500$ | `MODE_COMPLEX` | ~3800–4700 | 5500 |
-
----
+All code was written and tested manually. AI was used only for explanations, debugging help, and conceptual understanding.
