@@ -16,9 +16,10 @@ CFLAGS  = -Wall -Wextra -Werror
 
 SRCS    = main.c \
           ft_atol.c \
+          ft_split.c \
           index.c \
-          lst_utils.c \
-          lst_utils_2.c \
+          utils.c \
+          utils_2.c \
           parse_utils.c \
           push_logic.c \
           reverse_rotate.c \

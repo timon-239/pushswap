@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   lst_utils_2.c                                      :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                   +:+ +:+         +:+      */
 /*   By: tireis <tireis@student.42vienna.com>      #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/13 16:32:35 by tireis           #+#    #+#              */
-/*   Updated: 2026/06/15 19:08:01 by eboualla         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:10:48 by eboualla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -73,4 +73,21 @@ float	disorder_metric(t_stack *a)
 	if (total_pairs == 0)
 		return (0);
 	return (mistakes / total_pairs);
+}
+
+int	parse_token(char *str, t_stack **a)
+{
+	long	val;
+	t_stack	*new;
+
+	if (!is_num(str))
+		return (0);
+	val = ft_atol(str);
+	if (val > 2147483647 || val < -2147483648)
+		return (0);
+	new = ft_stacknew((int)val);
+	if (!new)
+		return (0);
+	ft_stackadd_back(a, new);
+	return (1);
 }

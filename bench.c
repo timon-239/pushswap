@@ -33,13 +33,13 @@ static char	*bench_helper(t_mode mode, float disorder)
 	if (mode == MODE_SIMPLE)
 		return ("Simple / O(n²)");
 	if (mode == MODE_MEDIUM)
-		return ("Medium / O(n\u221An)");
+		return ("Medium / O(n√n)");
 	if (mode == MODE_COMPLEX)
 		return ("Complex / O(n log n)");
 	if (disorder < 0.2)
 		return ("Adaptive / O(n²)");
 	if (disorder < 0.5)
-		return ("Adaptive / O(n\u221An)");
+		return ("Adaptive / O(n√n)");
 	return ("Adaptive / O(n log n)");
 }
 

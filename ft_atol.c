@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 static int	isspace(char c)
 {
 	if (c == '\f' || c == '\t' || c == '\n' || c == '\v' || c == '\r'

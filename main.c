@@ -31,27 +31,25 @@ static int	check_flag(char *argv, t_config *cfg)
 static int	parse_arguments(int argc, char **argv, t_stack **a, t_config *cfg)
 {
 	int		i;
-	long	val;
-	t_stack	*new;
+	int		j;
+	char	**s;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		if (check_flag(argv[i], cfg))
-		{
-			i++;
 			continue ;
+		s = ft_split(argv[i], ' ');
+		if (!s)
+			return (0);
+		j = 0;
+		while (s[j])
+		{
+			if (!parse_token(s[j], a))
+				return (ft_freeall(s, j), 0);
+			j++;
 		}
-		if (!is_num(argv[i]))
-			return (0);
-		val = ft_atol(argv[i]);
-		if (val > 2147483647 || val < -2147483648)
-			return (0);
-		new = ft_stacknew((int)val);
-		if (!new)
-			return (0);
-		ft_stackadd_back(a, new);
-		i++;
+		ft_freeall(s, j);
 	}
 	return (1);
 }

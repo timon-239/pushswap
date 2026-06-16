@@ -44,15 +44,3 @@ void	pb(t_stack **a, t_stack **b, t_bench *bench)
 	bench->total++;
 	ft_printf(1, "pb\n");
 }
-/*
-int	main(void)
-{
-	t_stack	*stack_a;
-	t_stack	*node1;
-	t_stack	*node2;
-	t_stack	*node3;
-	t_stack	*stack_b;
-	t_stack	*node4;
-	t_stack	*node5;
-	t_stack	*node6;
-}*/

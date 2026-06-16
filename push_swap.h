@@ -16,6 +16,7 @@
 # include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
+#
 
 typedef enum e_mode
 {
@@ -67,6 +68,7 @@ t_stack				*ft_stacknew(int value);
 void				ft_stack_sa(t_stack **stack);
 void				ft_freestack(t_stack **stack);
 int					ft_strcmp(char *s1, char *s2);
+int					parse_token(char *str, t_stack **a);
 // BASICS
 void				ft_swap_logic(t_stack **stack);
 void				sa(t_stack **stack_a, t_bench *bench);
@@ -84,6 +86,9 @@ void				ra(t_stack **a, t_bench *bench);
 void				rb(t_stack **b, t_bench *bench);
 // rest
 long				ft_atol(const char *str);
+char				**ft_split(const char *s, char c);
+char				**ft_freeall(char **arr, size_t i);
+size_t				ft_strlen(const char *str);
 int					is_num(char *str);
 int					has_duplicates(t_stack *stack);
 void				assign_index(t_stack *a);
