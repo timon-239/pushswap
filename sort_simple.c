@@ -64,7 +64,7 @@ void	push_min_to_b(t_stack **a, t_stack **b, int target_index,
 
 	pos = get_pos_of_index(*a, target_index);
 	size = ft_stacksize(*a);
-	while (pos != 0)
+	while (pos != 0 && pos != -1)
 	{
 		if (pos <= size / 2)
 			ra(a, bench);
