@@ -16,7 +16,6 @@
 # include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
-#
 
 typedef enum e_mode
 {
